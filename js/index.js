@@ -11,34 +11,23 @@ fetch('http://localhost:3000/books')
         const detLi = document.createElement('li')
             detLi.dataset.id = bookObj.id
             detLi.textContent = bookObj.title
-            detLi.classList.add('sidelist')   
+            detLi.addEventListener('click', () =>{
+                makeShowDiv(bookObj)
+            })   
             bookUl.append(detLi)
     }
-
-bookUl.addEventListener('click', evt => {
-    if(evt.target.matches('li.sidelist')){    
-        fetch(`http://localhost:3000/books/${evt.target.dataset.id}`)
-            .then(res => res.json())
-            .then(bookObj => {
-                makeShowDiv(bookObj)
-            })
-    }
-})
 
 function makeShowDiv(bookObj){
     let showImg = document.createElement('img')
         showImg.src = bookObj.img_url
 
     let showTitle = document.createElement('h4')
-        showTitle.classList.add('title')
         showTitle.textContent = bookObj.title
     
     let showSubtitle = document.createElement('h4')
-        showSubtitle.classList.add('subtitle')
         showSubtitle.textContent = bookObj.subtitle
 
     let showAuthor = document.createElement('h4')
-        showAuthor.classList.add('author')
         showAuthor.textContent = bookObj.author
 
     let description = document.createElement('p')
