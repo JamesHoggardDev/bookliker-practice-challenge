@@ -42,7 +42,6 @@ function makeShowDiv(bookObj){
             userLi.textContent = userObj.username
             showUl.append(userLi)
     }) 
-    
     let likeBttn = document.createElement('button')
         likeBttn.dataset.id = bookObj.id
         likeBttn.textContent = "Like"
